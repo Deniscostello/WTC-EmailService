@@ -12,9 +12,9 @@ public class EmailController {
     }
 
     @PostMapping("/email")
-    public String emailUser(@Valid @RequestBody EmailData emailData){
-        String subject = "Hi " + emailData.getName() + " welcome to the platfrom";
-        sendService.sendEmail(emailData.getEmail(), subject, "You are now registered");
+    public String emailUser(@RequestBody User user){
+        String subject = "Hi " + user.getUsername() + " welcome to the platform";
+        sendService.sendEmail(user.getEmail(), subject, "You are now registered");
         String confirmEmail = "User emailed";
         return confirmEmail;
     }
